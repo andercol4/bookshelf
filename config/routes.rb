@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "libraries#index"
+  root to: "books#index"
 
   resources :libraries
   resources :books

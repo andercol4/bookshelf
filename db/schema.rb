@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_040307) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_040350) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_040307) do
     t.bigint "series_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "publication_id"
+    t.index ["publication_id"], name: "index_books_on_publication_id"
     t.index ["series_id"], name: "index_books_on_series_id"
   end
 
@@ -124,6 +126,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_040307) do
   add_foreign_key "book_authors", "books"
   add_foreign_key "book_libraries", "books"
   add_foreign_key "book_libraries", "libraries"
+  add_foreign_key "books", "publications"
   add_foreign_key "books", "series"
   add_foreign_key "libraries", "users"
   add_foreign_key "user_libraries", "libraries"

@@ -1,9 +1,14 @@
-<div class="container columns-4 p-10">
-  <%=%>
-  <h1>Books</h1>
-  <%= link_to "New Book", new_book_path %>
+<div class="container">
+  <p>
+    <%= link_to "New Book", new_book_path %>
+  </p>
   <% @books.each do |book| %>
-    <%= link_to book.title, book_path(book)%>
+    <br/>
+    <p>
+      <%= image_tag book.cover_image.variant(:thumb) if book.cover_image.attached? %>
+
+      <%= link_to book.title, book_path(book)%>
+    </p>
     <%# <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>

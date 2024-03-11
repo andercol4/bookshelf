@@ -59,9 +59,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_151315) do
   end
 
   create_table "book_copies", force: :cascade do |t|
+    t.bigint "book_id", null: false
     t.integer "book_format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_copies_on_book_id"
   end
 
   create_table "book_libraries", force: :cascade do |t|
@@ -130,6 +132,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_151315) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_authors", "authors"
   add_foreign_key "book_authors", "books"
+  add_foreign_key "book_copies", "books"
   add_foreign_key "book_libraries", "books"
   add_foreign_key "book_libraries", "libraries"
   add_foreign_key "books", "publications"

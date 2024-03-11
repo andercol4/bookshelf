@@ -1,10 +1,12 @@
 class BookCopy < ApplicationRecord
 
+  belongs_to :book
+
   enum book_format: [:ereader, :audiobook, :physical]
 
   has_one_attached :file
 
-  validates :file_attached?, if: :digital_copy?
+  validate :file_attached?, if: :digital_copy?
 
   def file_attached?
     errors.add(:file, 'needs to be attached') if !file.attached?

@@ -4,3 +4,9 @@
 <p>
   <%= @book.description%>
 </p>
+
+<% @book.book_copies.each do |copy| %>
+  <%= link_to copy.file.filename, rails_blob_path(copy.file, disposition: 'attachment') if copy.file.attached? %>
+<% end %>
+
+<%= image_tag(@book.cover_image) if @book.cover_image.attached? %>

@@ -1,9 +1,16 @@
-<%= form_with model: @book, data: {turbo: false} do |f| %>
+<%= form_with model: @book do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :description %>
   <%= f.text_field :description %>
+
+  <%= f.label :cover_image %>
+  <%= f.file_field  :cover_image %>
+
+  <%= f.fields_for :book_copies, @book.book_copies.new do |book_copy_fields| %>
+      <%= render "book_copy_fields", f: book_copy_fields %>
+  <% end %>
 
   <%= f.submit %>
 <% end %>

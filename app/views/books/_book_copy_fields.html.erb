@@ -1,0 +1,7 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <%= f.label :book_format %>
+  <%= f.select :book_format, options_for_select(BookCopy.book_formats.map {|k, v| [k.humanize.capitalize, k]})  %>
+
+  <%= f.label :file %>
+  <%= f.file_field  :file %>
+</div>

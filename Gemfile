@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
@@ -31,6 +31,8 @@ gem 'devise'
 gem 'tailwindcss-rails'
 
 gem 'image_processing', '~> 1.2'
+
+gem 'epub-parser'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

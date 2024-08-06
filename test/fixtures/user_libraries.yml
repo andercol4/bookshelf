@@ -5,5 +5,5 @@ one:
   library: one
 
 two:
-  user: two
+  user: one
   library: two

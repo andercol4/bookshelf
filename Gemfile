@@ -34,6 +34,9 @@ gem 'image_processing', '~> 1.2'
 
 gem 'epub-parser'
 
+gem 'rubocop', require: false
+
+gem 'rubocop-airbnb', require: false
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

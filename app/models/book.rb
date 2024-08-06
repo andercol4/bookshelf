@@ -26,4 +26,5 @@ class Book < ApplicationRecord
   end
 
   accepts_nested_attributes_for :book_copies, reject_if: :all_blank, allow_destroy: true
+  validates :authors, :length => { :minimum => 1 , message: "is too short (minimum is 1)"}
 end

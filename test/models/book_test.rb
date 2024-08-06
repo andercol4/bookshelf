@@ -14,7 +14,9 @@
 require "test_helper"
 
 class BookTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "books have validations" do
+    book = Book.new
+    assert_not book.save
+    assert_includes book.errors.full_messages, "Authors is too short (minimum is 1)"
+  end
 end

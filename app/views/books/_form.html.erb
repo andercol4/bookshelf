@@ -1,16 +1,28 @@
-<%= form_with model: @book do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div data-controller="nested-form">
+  <%= form_with model: @book do |f| %>
+    <template data-target="nested-form.template">
+      <%= f.fields_for :book_copies, child_index: "NEW_RECORD" do |book_copy_fields| %>
+        <%= render "book_copy_fields", form: book_copy_fields %>
+      <% end %>
+    </template>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
 
-  <%= f.label :cover_image %>
-  <%= f.file_field  :cover_image %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
 
-  <%= f.fields_for :book_copies, @book.book_copies.new do |book_copy_fields| %>
-      <%= render "book_copy_fields", f: book_copy_fields %>
+    <%= f.label :cover_image %>
+    <%= f.file_field  :cover_image %>
+
+
+    <%= f.fields_for :book_copies do |book_copy_fields| %>
+        <%= render "book_copy_fields", form: book_copy_fields %>
+    <% end %>
+    <div class="mb-3" data-target="nested-form.links">
+      <%= link_to "Add Book Copy", "#", class: "btn", data: { action: "click->nested-form#add_association" } %>
+    </div>
+
+    <%= f.submit %>
   <% end %>
-
-  <%= f.submit %>
-<% end %>
+</div>

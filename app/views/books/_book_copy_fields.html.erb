@@ -1,7 +1,12 @@
-<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
-  <%= f.label :book_format %>
-  <%= f.select :book_format, options_for_select(BookCopy.book_formats.map {|k, v| [k.humanize.capitalize, k]})  %>
+<%= content_tag :div, class: "nested-fields", data: { new_record: form.object.new_record? } do %>
+  <div class="form-group">
+    <%= form.label :book_format %>
+    <%= form.select :book_format, options_for_select(BookCopy.book_formats.map {|k, v| [k.humanize.capitalize, k]})  %>
 
-  <%= f.label :file %>
-  <%= f.file_field  :file %>
-</div>
+    <%= form.label :file %>
+    <%= form.file_field  :file %>
+    <small><%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %></small>
+  </div>
+
+  <%= form.hidden_field :_destroy %>
+<% end %>
